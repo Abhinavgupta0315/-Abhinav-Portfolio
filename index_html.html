@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Abhinav Gupta | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --pink:#f472b6;
+  --purple:#a855f7;
+  --blue:#3b82f6;
+  --cyan:#06b6d4;
+  --text:#0f0a1e;
+  --muted:#4b3f72;
+  --surface:rgba(255,255,255,0.55);
+  --border:rgba(255,255,255,0.7);
+  --blur:blur(18px);
+}
+body{
+  font-family:'Inter',sans-serif;
+  background:#f0e9ff;
+  color:var(--text);
+  overflow-x:hidden;
+  min-height:100vh;
+}
+
+/* ── BG BLOBS ── */
+.blobs{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.55}
+.b1{width:600px;height:600px;background:radial-gradient(circle,#c084fc,#818cf8);top:-120px;left:-150px}
+.b2{width:500px;height:500px;background:radial-gradient(circle,#f9a8d4,#f472b6);top:30%;right:-100px}
+.b3{width:450px;height:450px;background:radial-gradient(circle,#67e8f9,#3b82f6);bottom:-100px;left:20%}
+.b4{width:350px;height:350px;background:radial-gradient(circle,#86efac,#a855f7);top:60%;left:-80px}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(255,255,255,0.4);
+  backdrop-filter:var(--blur);
+  -webkit-backdrop-filter:var(--blur);
+  border-bottom:1px solid var(--border);
+  padding:0 2.5rem;
+  height:64px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.logo{
+  font-family:'Syne',sans-serif;
+  font-weight:800;font-size:1.3rem;
+  background:linear-gradient(135deg,var(--purple),var(--pink));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{
+  color:var(--muted);text-decoration:none;
+  font-size:0.85rem;font-weight:500;
+  transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--purple)}
+
+/* ── GLASS CARD ── */
+.glass{
+  background:rgba(255,255,255,0.45);
+  backdrop-filter:var(--blur);
+  -webkit-backdrop-filter:var(--blur);
+  border:1px solid var(--border);
+  border-radius:20px;
+}
+
+/* ── LAYOUT ── */
+.wrap{max-width:1100px;margin:0 auto;padding:0 2rem;position:relative;z-index:1}
+
+/* ── HERO ── */
+#hero{
+  min-height:100vh;
+  display:flex;align-items:center;
+  padding-top:80px;
+}
+.hero-inner{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:4rem;
+  align-items:center;
+  width:100%;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  background:rgba(168,85,247,0.12);
+  border:1px solid rgba(168,85,247,0.3);
+  border-radius:100px;
+  padding:0.4rem 1rem;
+  font-size:0.78rem;font-weight:600;
+  color:var(--purple);letter-spacing:0.5px;
+  margin-bottom:1.2rem;
+}
+.hero-badge .dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--purple);
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+.hero-name{
+  font-family:'Syne',sans-serif;
+  font-size:clamp(2.8rem,6vw,5rem);
+  font-weight:800;
+  line-height:1.05;
+  margin-bottom:1rem;
+}
+.grad-text{
+  background:linear-gradient(135deg,#a855f7 0%,#3b82f6 50%,#06b6d4 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero-sub{
+  font-size:1.05rem;color:var(--muted);
+  line-height:1.7;margin-bottom:2rem;
+}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn{
+  padding:0.75rem 1.8rem;border-radius:12px;
+  font-weight:600;font-size:0.9rem;
+  text-decoration:none;transition:all 0.25s;
+  cursor:pointer;border:none;display:inline-block;
+}
+.btn-grad{
+  background:linear-gradient(135deg,var(--purple),var(--blue));
+  color:#fff;
+  box-shadow:0 4px 20px rgba(168,85,247,0.35);
+}
+.btn-grad:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(168,85,247,0.45)}
+.btn-glass{
+  background:rgba(255,255,255,0.5);
+  border:1px solid var(--border);
+  color:var(--muted);
+  backdrop-filter:blur(8px);
+}
+.btn-glass:hover{background:rgba(255,255,255,0.75);color:var(--purple)}
+
+/* hero card */
+.hero-card{
+  padding:2rem;
+  text-align:center;
+}
+.avatar{
+  width:100px;height:100px;border-radius:50%;
+  background:linear-gradient(135deg,#a855f7,#06b6d4);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Syne',sans-serif;font-size:2.2rem;font-weight:800;
+  color:#fff;margin:0 auto 1.2rem;
+  box-shadow:0 8px 30px rgba(168,85,247,0.4);
+}
+.stat-row{
+  display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem;
+}
+.stat{
+  background:rgba(255,255,255,0.5);
+  border:1px solid var(--border);
+  border-radius:14px;padding:0.9rem;
+}
+.stat-num{
+  font-family:'Syne',sans-serif;
+  font-size:1.6rem;font-weight:800;
+  background:linear-gradient(135deg,var(--purple),var(--blue));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.stat-label{font-size:0.72rem;color:var(--muted);font-weight:500;margin-top:2px}
+
+/* ── SECTION ── */
+section{padding:6rem 0}
+.sec-tag{
+  display:inline-block;
+  background:rgba(168,85,247,0.1);
+  border:1px solid rgba(168,85,247,0.25);
+  border-radius:100px;
+  padding:0.3rem 0.9rem;
+  font-size:0.72rem;font-weight:700;
+  color:var(--purple);letter-spacing:1px;
+  text-transform:uppercase;margin-bottom:0.75rem;
+}
+.sec-title{
+  font-family:'Syne',sans-serif;
+  font-size:2.2rem;font-weight:800;
+  margin-bottom:0.5rem;
+}
+.sec-sub{color:var(--muted);font-size:0.95rem;margin-bottom:3rem}
+
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+.about-card{padding:2rem}
+.about-card p{color:var(--muted);line-height:1.8;margin-bottom:1rem;font-size:0.95rem}
+.info-list{list-style:none}
+.info-list li{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0.75rem 0;
+  border-bottom:1px solid rgba(168,85,247,0.1);
+  font-size:0.88rem;
+}
+.info-list li:last-child{border-bottom:none}
+.info-key{color:var(--muted);font-weight:500}
+.info-val{font-weight:600;color:var(--text)}
+.info-val a{color:var(--purple);text-decoration:none}
+
+/* ── SKILLS ── */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.2rem}
+.skill-card{padding:1.5rem;transition:transform 0.25s}
+.skill-card:hover{transform:translateY(-4px)}
+.skill-icon{
+  width:42px;height:42px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;margin-bottom:1rem;
+}
+.ic-purple{background:rgba(168,85,247,0.15)}
+.ic-blue{background:rgba(59,130,246,0.15)}
+.ic-cyan{background:rgba(6,182,212,0.15)}
+.ic-pink{background:rgba(244,114,182,0.15)}
+.skill-name{font-weight:700;font-size:0.95rem;margin-bottom:0.75rem;font-family:'Syne',sans-serif}
+.tags{display:flex;flex-wrap:wrap;gap:0.45rem}
+.tag{
+  font-size:0.73rem;font-weight:600;
+  padding:0.3rem 0.7rem;border-radius:100px;
+}
+.tg-purple{background:rgba(168,85,247,0.12);color:#7c3aed;border:1px solid rgba(168,85,247,0.2)}
+.tg-blue{background:rgba(59,130,246,0.12);color:#1d4ed8;border:1px solid rgba(59,130,246,0.2)}
+.tg-cyan{background:rgba(6,182,212,0.12);color:#0e7490;border:1px solid rgba(6,182,212,0.2)}
+.tg-pink{background:rgba(244,114,182,0.12);color:#be185d;border:1px solid rgba(244,114,182,0.2)}
+
+/* ── PROJECTS ── */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+.proj-card{padding:1.8rem;transition:transform 0.25s;display:flex;flex-direction:column}
+.proj-card:hover{transform:translateY(-5px)}
+.proj-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem}
+.proj-num{
+  font-family:'Syne',sans-serif;font-size:0.72rem;font-weight:700;
+  background:rgba(168,85,247,0.12);
+  border:1px solid rgba(168,85,247,0.2);
+  border-radius:100px;padding:0.25rem 0.7rem;
+  color:var(--purple);
+}
+.proj-badge{
+  font-size:0.68rem;font-weight:600;
+  padding:0.25rem 0.7rem;border-radius:100px;
+}
+.soon{background:rgba(6,182,212,0.1);color:#0e7490;border:1px solid rgba(6,182,212,0.2)}
+.live{background:rgba(74,222,128,0.12);color:#15803d;border:1px solid rgba(74,222,128,0.25)}
+.proj-title{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:0.6rem}
+.proj-desc{color:var(--muted);font-size:0.88rem;line-height:1.65;flex:1;margin-bottom:1.2rem}
+.proj-stack{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.2rem}
+.proj-stack span{
+  font-size:0.7rem;font-weight:600;
+  padding:0.2rem 0.6rem;border-radius:6px;
+  background:rgba(59,130,246,0.1);color:#1d4ed8;
+  border:1px solid rgba(59,130,246,0.18);
+}
+.proj-links{display:flex;gap:0.7rem}
+.proj-link{
+  font-size:0.78rem;font-weight:600;
+  padding:0.45rem 1rem;border-radius:10px;
+  text-decoration:none;transition:all 0.2s;
+  background:rgba(255,255,255,0.5);
+  border:1px solid var(--border);
+  color:var(--muted);
+}
+.proj-link:hover{background:rgba(168,85,247,0.1);border-color:rgba(168,85,247,0.3);color:var(--purple)}
+
+/* ── EDUCATION ── */
+.edu-card{padding:2rem;display:grid;grid-template-columns:60px 1fr;gap:1.5rem;align-items:center}
+.edu-ico{
+  width:56px;height:56px;border-radius:16px;
+  background:linear-gradient(135deg,rgba(168,85,247,0.2),rgba(59,130,246,0.2));
+  display:flex;align-items:center;justify-content:center;font-size:1.6rem;
+  border:1px solid rgba(168,85,247,0.2);
+}
+.edu-degree{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:700;margin-bottom:0.3rem}
+.edu-uni{font-weight:600;font-size:0.9rem;margin-bottom:0.5rem;
+  background:linear-gradient(135deg,var(--purple),var(--blue));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.edu-meta{display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:0.5rem}
+.edu-pill{
+  font-size:0.73rem;font-weight:600;
+  padding:0.25rem 0.75rem;border-radius:100px;
+  background:rgba(168,85,247,0.1);color:#7c3aed;
+  border:1px solid rgba(168,85,247,0.2);
+}
+
+/* ── CONTACT ── */
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+.contact-txt h3{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:0.75rem}
+.contact-txt p{color:var(--muted);line-height:1.75;margin-bottom:1.5rem;font-size:0.95rem}
+.contact-links{display:flex;flex-direction:column;gap:0.9rem}
+.c-link{
+  display:flex;align-items:center;gap:1rem;
+  padding:1rem 1.25rem;border-radius:16px;
+  text-decoration:none;transition:all 0.2s;
+  background:rgba(255,255,255,0.45);
+  border:1px solid var(--border);
+  backdrop-filter:blur(12px);
+}
+.c-link:hover{transform:translateX(5px);background:rgba(255,255,255,0.65);border-color:rgba(168,85,247,0.4)}
+.c-icon{
+  width:40px;height:40px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;
+}
+.ci-mail{background:rgba(244,114,182,0.15)}
+.ci-li{background:rgba(59,130,246,0.15)}
+.ci-gh{background:rgba(168,85,247,0.15)}
+.c-info{}
+.c-lbl{font-size:0.68rem;font-weight:700;color:var(--muted);letter-spacing:0.5px;text-transform:uppercase}
+.c-val{font-size:0.88rem;font-weight:600;color:var(--text);margin-top:1px}
+.c-arrow{margin-left:auto;color:var(--purple);font-size:1rem}
+
+/* ── FOOTER ── */
+footer{
+  text-align:center;padding:2rem;
+  border-top:1px solid rgba(168,85,247,0.15);
+  font-size:0.82rem;color:var(--muted);
+  position:relative;z-index:1;
+}
+footer strong{color:var(--purple)}
+
+/* ── FADE IN ── */
+.fade{opacity:0;transform:translateY(22px);transition:opacity 0.55s ease,transform 0.55s ease}
+.fade.in{opacity:1;transform:translateY(0)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .hero-inner,.about-grid,.contact-wrap{grid-template-columns:1fr}
+  .hero-card{display:none}
+  .nav-links{display:none}
+  .edu-card{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- BG -->
+<div class="blobs">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+  <div class="blob b4"></div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">AG.</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="wrap">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge"><span class="dot"></span> Open to Internships</div>
+        <h1 class="hero-name">
+          Hi, I'm<br>
+          <span class="grad-text">Abhinav Gupta</span>
+        </h1>
+        <p class="hero-sub">
+          B.Tech CSE student passionate about <strong>Cyber Security</strong> &amp; <strong>Web Development</strong>. I build secure apps, explore vulnerabilities, and love solving hard problems.
+        </p>
+        <div class="hero-btns">
+          <a href="#projects" class="btn btn-grad">View Projects</a>
+          <a href="#contact" class="btn btn-glass">Contact Me</a>
+        </div>
+      </div>
+      <div class="glass hero-card">
+        <div class="avatar">AG</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700">Abhinav Gupta</div>
+        <div style="font-size:0.82rem;color:var(--muted);margin-top:4px">Cyber Security &amp; Web Dev</div>
+        <div class="stat-row">
+          <div class="stat">
+            <div class="stat-num">3rd</div>
+            <div class="stat-label">Year B.Tech</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">CSE</div>
+            <div class="stat-label">CNCS Stream</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">5+</div>
+            <div class="stat-label">Technologies</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">GU</div>
+            <div class="stat-label">Galgotias Univ.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-tag">About Me</div>
+    <h2 class="sec-title">Who Am I?</h2>
+    <p class="sec-sub">A little bit about my background and journey</p>
+    <div class="about-grid fade">
+      <div class="glass about-card">
+        <p>I am a <strong>B.Tech Computer Science</strong> student at Galgotias University, specializing in <strong>Cyber Security &amp; Networks</strong>, currently in my 3rd year.</p>
+        <p>I have a strong passion for understanding how systems can be secured, broken, and rebuilt. I enjoy working on both the offensive and defensive sides of security while also crafting clean web experiences.</p>
+        <p>My goal is to work at the intersection of <strong>security and software</strong> — building systems that are functional, elegant, and resilient.</p>
+      </div>
+      <div class="glass about-card">
+        <ul class="info-list">
+          <li><span class="info-key">Full Name</span><span class="info-val">Abhinav Gupta</span></li>
+          <li><span class="info-key">University</span><span class="info-val">Galgotias University</span></li>
+          <li><span class="info-key">Degree</span><span class="info-val">B.Tech CSE (CNCS)</span></li>
+          <li><span class="info-key">Year</span><span class="info-val">3rd Year (2023–2027)</span></li>
+          <li><span class="info-key">Location</span><span class="info-val">Greater Noida, UP</span></li>
+          <li><span class="info-key">Email</span><span class="info-val"><a href="mailto:abhinavgupta0315@gmail.com">abhinavgupta0315@gmail.com</a></span></li>
+          <li><span class="info-key">GitHub</span><span class="info-val"><a href="https://github.com/Abhinavgupta0315" target="_blank">Abhinavgupta0315</a></span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-tag">Skills</div>
+    <h2 class="sec-title">Tech Stack</h2>
+    <p class="sec-sub">Technologies and tools I work with</p>
+    <div class="skills-grid fade">
+      <div class="glass skill-card">
+        <div class="skill-icon ic-purple">🔐</div>
+        <div class="skill-name">Cyber Security</div>
+        <div class="tags">
+          <span class="tag tg-purple">Kali Linux</span>
+          <span class="tag tg-purple">Ubuntu</span>
+          <span class="tag tg-purple">Ethical Hacking</span>
+          <span class="tag tg-purple">Network Security</span>
+        </div>
+      </div>
+      <div class="glass skill-card">
+        <div class="skill-icon ic-blue">🌐</div>
+        <div class="skill-name">Web Development</div>
+        <div class="tags">
+          <span class="tag tg-blue">HTML</span>
+          <span class="tag tg-blue">CSS</span>
+          <span class="tag tg-blue">JavaScript</span>
+        </div>
+      </div>
+      <div class="glass skill-card">
+        <div class="skill-icon ic-cyan">💻</div>
+        <div class="skill-name">Programming</div>
+        <div class="tags">
+          <span class="tag tg-cyan">Python</span>
+          <span class="tag tg-cyan">Java</span>
+          <span class="tag tg-cyan">SQL</span>
+        </div>
+      </div>
+      <div class="glass skill-card">
+        <div class="skill-icon ic-pink">🛠️</div>
+        <div class="skill-name">Tools</div>
+        <div class="tags">
+          <span class="tag tg-pink">Git</span>
+          <span class="tag tg-pink">GitHub</span>
+          <span class="tag tg-pink">VS Code</span>
+          <span class="tag tg-pink">Linux CLI</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-tag">Projects</div>
+    <h2 class="sec-title">My Work</h2>
+    <p class="sec-sub">Projects I've built — replace placeholders with your real ones!</p>
+    <div class="proj-grid fade">
+      <div class="glass proj-card">
+        <div class="proj-top">
+          <span class="proj-num">Project 01</span>
+          <span class="proj-badge live">Live</span>
+        </div>
+        <div class="proj-title">Portfolio Website</div>
+        <p class="proj-desc">Personal portfolio with glassmorphism design showcasing skills, projects, and contact information.</p>
+        <div class="proj-stack"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+        <div class="proj-links">
+          <a href="https://github.com/Abhinavgupta0315" target="_blank" class="proj-link">GitHub →</a>
+          <a href="#" class="proj-link">Live Demo →</a>
+        </div>
+      </div>
+      <div class="glass proj-card">
+        <div class="proj-top">
+          <span class="proj-num">Project 02</span>
+          <span class="proj-badge soon">Coming Soon</span>
+        </div>
+        <div class="proj-title">Network Scanner Tool</div>
+        <p class="proj-desc">Python-based utility to identify open ports, services, and potential vulnerabilities on a network. Built using Kali Linux environment.</p>
+        <div class="proj-stack"><span>Python</span><span>Kali Linux</span><span>Networking</span></div>
+        <div class="proj-links">
+          <a href="https://github.com/Abhinavgupta0315" target="_blank" class="proj-link">GitHub →</a>
+        </div>
+      </div>
+      <div class="glass proj-card">
+        <div class="proj-top">
+          <span class="proj-num">Project 03</span>
+          <span class="proj-badge soon">Coming Soon</span>
+        </div>
+        <div class="proj-title">Secure Login System</div>
+        <p class="proj-desc">Web authentication system with SQL integration, input sanitization and password hashing — built with security-first approach.</p>
+        <div class="proj-stack"><span>HTML</span><span>JavaScript</span><span>Python</span><span>SQL</span></div>
+        <div class="proj-links">
+          <a href="https://github.com/Abhinavgupta0315" target="_blank" class="proj-link">GitHub →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="wrap">
+    <div class="sec-tag">Education</div>
+    <h2 class="sec-title">Academic Background</h2>
+    <p class="sec-sub">Where I'm building my foundation</p>
+    <div class="glass edu-card fade">
+      <div class="edu-ico">🎓</div>
+      <div>
+        <div class="edu-degree">Bachelor of Technology — Computer Science Engineering</div>
+        <div class="edu-uni">Galgotias University, Greater Noida</div>
+        <div class="edu-meta">
+          <span class="edu-pill">Specialization: CNCS</span>
+          <span class="edu-pill">2023 – 2027</span>
+          <span class="edu-pill">3rd Year</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-tag">Contact</div>
+    <h2 class="sec-title">Let's Connect</h2>
+    <p class="sec-sub">Open to internships, collaborations and interesting projects</p>
+    <div class="contact-wrap fade">
+      <div class="contact-txt">
+        <h3>Have an opportunity?<br><span class="grad-text">Let's talk.</span></h3>
+        <p>I'm actively looking for <strong>internship opportunities</strong> in Cyber Security and Web Development. Whether it's a project, collaboration, or just a hello — my inbox is open.</p>
+        <a href="mailto:abhinavgupta0315@gmail.com" class="btn btn-grad" style="display:inline-block">Send a Message</a>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:abhinavgupta0315@gmail.com" class="c-link">
+          <div class="c-icon ci-mail">📧</div>
+          <div class="c-info">
+            <div class="c-lbl">Email</div>
+            <div class="c-val">abhinavgupta0315@gmail.com</div>
+          </div>
+          <div class="c-arrow">→</div>
+        </a>
+        <a href="https://www.linkedin.com/in/abhinav-gupta-0023b1314/" target="_blank" class="c-link">
+          <div class="c-icon ci-li">💼</div>
+          <div class="c-info">
+            <div class="c-lbl">LinkedIn</div>
+            <div class="c-val">abhinav-gupta-0023b1314</div>
+          </div>
+          <div class="c-arrow">→</div>
+        </a>
+        <a href="https://github.com/Abhinavgupta0315" target="_blank" class="c-link">
+          <div class="c-icon ci-gh">🐙</div>
+          <div class="c-info">
+            <div class="c-lbl">GitHub</div>
+            <div class="c-val">Abhinavgupta0315</div>
+          </div>
+          <div class="c-arrow">→</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Designed &amp; Built by <strong>Abhinav Gupta</strong> &nbsp;·&nbsp; 2025
+</footer>
+
+<script>
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in') })
+},{threshold:0.1})
+document.querySelectorAll('.fade').forEach(el => io.observe(el))
+</script>
+</body>
+</html>
